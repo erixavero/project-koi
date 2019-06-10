@@ -15,20 +15,21 @@ public class wall
         screenlimit = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         if(transform.position.x < screenlimit.x / 2)
         {
-            rb.velocity = new Vector2(-xspeed, 0);
+            rb.velocity = new Vector2(-xspeed, -5 * transform.position.y/(screenlimit.y*3/2));
         }
         else
         {
-            rb.velocity = new Vector2(xspeed, 0);
+            rb.velocity = new Vector2(xspeed, -5 * transform.position.y / (screenlimit.y * 3 / 2));
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < screenlimit.x*-2 || transform.position.y < screenlimit.y*-2)
+        if (transform.position.y < screenlimit.y*-2)
         {
             Destroy(this.gameObject);
         }
+        Debug.Log(rb.velocity);
     }
 }
