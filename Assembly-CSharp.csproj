@@ -65,6 +65,7 @@
     <Compile Include="Assets\script\bomb.cs" />
     <Compile Include="Assets\script\cursor.cs" />
     <Compile Include="Assets\script\makeobst.cs" />
+    <Compile Include="Assets\script\score.cs" />
     <Compile Include="Assets\script\wall.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/kek/2d fish/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
