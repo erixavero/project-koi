@@ -16,23 +16,23 @@ public class cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && FindObjectOfType<GManager>().playing())
         {
             Touch t = Input.GetTouch(0);
             Vector2 tpos = Camera.main.ScreenToWorldPoint(t.position);
 
             switch(t.phase)
             {
-                case TouchPhase.Began:
+                case TouchPhase.Began: //calculate movement
                     deltax = tpos.x - transform.position.x;
                     deltay = tpos.y - transform.position.y;
                     break;
 
-                case TouchPhase.Moved:
+                case TouchPhase.Moved: //move cursor
                     rb.MovePosition(new Vector2(tpos.x - deltax, tpos.y - deltay));
                     break;
 
-                case TouchPhase.Ended:
+                case TouchPhase.Ended: //stop cursor
                     rb.velocity = Vector2.zero;
                     break;
             }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bomb : MonoBehaviour
 {
-    public float speed = -10f; 
     private Rigidbody2D rb;
     private Vector2 screenlimit;
     // Start is called before the first frame update
@@ -18,6 +17,7 @@ public class bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if offscreen
         if (transform.position.x < screenlimit.x*-2 || transform.position.y < screenlimit.y * -2)
         {
             Destroy(this.gameObject);

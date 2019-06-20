@@ -7,7 +7,7 @@ public class makeobst : MonoBehaviour
     public GameObject[] obstprefab;
     //public float spawntime = 0.5f;
     private Vector2 screenlim;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +18,12 @@ public class makeobst : MonoBehaviour
     void spawncrap(int pref, int walldir)
     {
         GameObject t = Instantiate(obstprefab[pref]) as GameObject;
-        //bomb
+        //bomb position
         if(pref < 1)
         {
             t.transform.position = new Vector2(Random.Range(screenlim.x*6/5, -screenlim.x), screenlim.y * 2);
         }
-        //wall
+        //wall position
         else
         {
             if (walldir == 0)
@@ -42,16 +42,20 @@ public class makeobst : MonoBehaviour
     {
         while (true)
         {
-            float spawntime = Random.Range(0.1f, 1);
+            float spawntime = Random.Range(0.1f, 2);
+            Debug.Log(spawntime);
+            //timer
             yield return new WaitForSeconds(spawntime);
-            int pref = Random.Range(0, 2);
+
+            int pref = Random.Range(0, 5);
             int wallp = 0;
-            if (pref > 0) {
+            if (pref > 1) {
                 wallp = Random.Range(0, 2);
             }
-            
-            Debug.Log("pref "+pref);
-            spawncrap(pref, wallp);
+            //if game started, start spawning
+            if (FindObjectOfType<GManager>().playing()) {
+                spawncrap(pref, wallp);
+            }
         }
     }
 }
